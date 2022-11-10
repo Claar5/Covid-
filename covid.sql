@@ -82,12 +82,22 @@ from deaths dea
 join vacanation vac on dea.location = vac.location
 and dea.date2 = vac.date3
 group by dea.location, dea.population
-order by 1,2
+order by 1,2;
 
 
+---https://www.youtube.com/watch?v=QILNlRvJlfQ
+select location, sum(new_deaths) as TotalDeathCount
+from deaths
+where new_deaths is not null
+group by location
+order by TotalDeathCount desc;
 
 
+select location, population, max(total_cases), max((total_cases/population))*100 as PercentInfected
+from deaths
+group by location, population
+order by PercentInfected desc;
 
-
+-- if we include all in one excell they all need to tie together like they need to be able to join on something
 
 
